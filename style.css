@@ -15,6 +15,22 @@ body {
     min-height: 100vh;
     animation: fadeIn 1.5s ease-out;
     overflow-x: hidden;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid;
+    border-image: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5) 1;
+    pointer-events: none;
+    z-index: 10;
 }
 
 @keyframes fadeIn {
@@ -26,14 +42,6 @@ body {
     0%, 100% { transform: translateY(0px) rotate(0deg); }
     33% { transform: translateY(-10px) rotate(1deg); }
     66% { transform: translateY(5px) rotate(-1deg); }
-}
-
-@keyframes colorShift {
-    0% { color: #ff006e; }
-    25% { color: #8338ec; }
-    50% { color: #3a86ff; }
-    75% { color: #06ffa5; }
-    100% { color: #ff006e; }
 }
 
 body::before {
@@ -68,6 +76,11 @@ h1 {
     animation: gradientShift 4s ease-in-out infinite, float 6s ease-in-out infinite;
     margin-bottom: 2rem;
     text-shadow: 0 0 30px rgba(255, 0, 110, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 @keyframes gradientShift {
@@ -83,18 +96,11 @@ h2 {
     margin: 3rem 0 1.5rem 0;
     position: relative;
     animation: slideIn 1s ease-out 0.3s both;
-}
-
-h2::before {
-    content: '';
-    position: absolute;
-    left: -20px;
-    top: 50%;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(90deg, #ff006e, #8338ec);
-    transform: translateY(-50%);
-    border-radius: 2px;
+    border-left: 4px solid #ff006e;
+    border-right: 4px solid #8338ec;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
 }
 
 p {
@@ -104,17 +110,31 @@ p {
     margin-bottom: 1.5rem;
     animation: slideIn 1s ease-out 0.5s both;
     backdrop-filter: blur(2px);
-    padding: 1rem;
-    border-radius: 10px;
+    padding: 1.5rem;
+    border-radius: 12px;
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 3px solid #3a86ff;
     transition: all 0.3s ease;
+    position: relative;
+}
+
+p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(45deg, #ff006e, transparent);
+    border-radius: 0 12px 0 12px;
 }
 
 p:hover {
     background: rgba(255, 255, 255, 0.08);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(255, 0, 110, 0.2);
+    border-left: 3px solid #ff006e;
 }
 
 @keyframes slideIn {
@@ -129,6 +149,10 @@ a {
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 2px solid rgba(6, 255, 165, 0.3);
+    border-radius: 25px;
+    margin: 0.5rem 0;
 }
 
 a::after {
@@ -146,6 +170,8 @@ a:hover {
     color: #ff006e;
     transform: scale(1.05) translateY(-1px);
     text-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
+    border-color: #ff006e;
+    background: rgba(255, 0, 110, 0.1);
 }
 
 a:hover::after {
@@ -155,4 +181,8 @@ a:hover::after {
 strong {
     color: #8338ec;
     font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    background: rgba(131, 56, 236, 0.2);
+    border-radius: 4px;
+    border: 1px solid rgba(131, 56, 236, 0.3);
 }
