@@ -4,7 +4,7 @@ body {
     font-family: 'Space Grotesk', sans-serif;
     max-width: 900px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 60px 20px;
     background: 
         radial-gradient(circle at 20% 80%, #ff1744 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, #8e24aa 0%, transparent 50%),
@@ -18,58 +18,114 @@ body {
     position: relative;
 }
 
+/* Album Collage Border */
 body::before {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    right: 0;
+    bottom: 0;
     background: 
-        repeating-linear-gradient(
-            45deg,
-            transparent 0px,
-            transparent 50px,
-            rgba(255, 23, 68, 0.03) 52px,
-            rgba(255, 23, 68, 0.03) 54px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent 0px,
-            transparent 50px,
-            rgba(142, 36, 170, 0.03) 52px,
-            rgba(142, 36, 170, 0.03) 54px
-        );
-    animation: backgroundMove 10s linear infinite;
+        /* Top border albums */
+        linear-gradient(90deg, 
+            #ff6b35 0%, #ff6b35 8%,     /* Pablo orange */
+            #000000 8%, #000000 16%,    /* PMD2 black */
+            #f4a261 16%, #f4a261 24%,   /* Blonde orange */
+            #cc0000 24%, #cc0000 32%,   /* Yeezus red */
+            #2a9d8f 32%, #2a9d8f 40%,   /* I AM MUSIC teal */
+            #8b5a2b 40%, #8b5a2b 48%,   /* Art of Monkey brown */
+            #264653 48%, #264653 56%,   /* HERBS green */
+            #e76f51 56%, #e76f51 64%,   /* Voir Dire coral */
+            #e63946 64%, #e63946 72%,   /* N.E.R.D red */
+            #f77f00 72%, #f77f00 80%,   /* Baby Keem orange */
+            #6a4c93 80%, #6a4c93 88%,   /* Lord Fubu purple */
+            #2f3e46 88%, #2f3e46 100%   /* Cactus Jack dark */
+        ) top/100% 20px no-repeat,
+        
+        /* Bottom border */
+        linear-gradient(90deg, 
+            #2f3e46 0%, #2f3e46 8%,     /* Reversed order */
+            #6a4c93 8%, #6a4c93 16%,
+            #f77f00 16%, #f77f00 24%,
+            #e63946 24%, #e63946 32%,
+            #e76f51 32%, #e76f51 40%,
+            #264653 40%, #264653 48%,
+            #8b5a2b 48%, #8b5a2b 56%,
+            #2a9d8f 56%, #2a9d8f 64%,
+            #cc0000 64%, #cc0000 72%,
+            #f4a261 72%, #f4a261 80%,
+            #000000 80%, #000000 88%,
+            #ff6b35 88%, #ff6b35 100%
+        ) bottom/100% 20px no-repeat,
+        
+        /* Left border */
+        linear-gradient(180deg,
+            #ff6b35 0%, #ff6b35 8%,
+            #000000 8%, #000000 16%,
+            #f4a261 16%, #f4a261 24%,
+            #cc0000 24%, #cc0000 32%,
+            #2a9d8f 32%, #2a9d8f 40%,
+            #8b5a2b 40%, #8b5a2b 48%,
+            #264653 48%, #264653 56%,
+            #e76f51 56%, #e76f51 64%,
+            #e63946 64%, #e63946 72%,
+            #f77f00 72%, #f77f00 80%,
+            #6a4c93 80%, #6a4c93 88%,
+            #2f3e46 88%, #2f3e46 100%
+        ) left/20px 100% no-repeat,
+        
+        /* Right border */
+        linear-gradient(180deg,
+            #2f3e46 0%, #2f3e46 8%,
+            #6a4c93 8%, #6a4c93 16%,
+            #f77f00 16%, #f77f00 24%,
+            #e63946 24%, #e63946 32%,
+            #e76f51 32%, #e76f51 40%,
+            #264653 40%, #264653 48%,
+            #8b5a2b 48%, #8b5a2b 56%,
+            #2a9d8f 56%, #2a9d8f 64%,
+            #cc0000 64%, #cc0000 72%,
+            #f4a261 72%, #f4a261 80%,
+            #000000 80%, #000000 88%,
+            #ff6b35 88%, #ff6b35 100%
+        ) right/20px 100% no-repeat;
+    
     pointer-events: none;
-    z-index: -2;
+    z-index: -3;
+    animation: borderShift 20s linear infinite;
 }
 
+@keyframes borderShift {
+    0% { filter: hue-rotate(0deg) brightness(1); }
+    50% { filter: hue-rotate(30deg) brightness(1.1); }
+    100% { filter: hue-rotate(0deg) brightness(1); }
+}
+
+/* Floating album titles */
 body::after {
     content: '';
     position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
     background: 
-        radial-gradient(circle at 25% 25%, rgba(255, 23, 68, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 25%, rgba(142, 36, 170, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-    animation: rotateGradient 15s linear infinite;
+        /* Album title snippets floating around */
+        radial-gradient(circle at 10% 10%, rgba(255, 107, 53, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(0, 0, 0, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 10% 90%, rgba(244, 162, 97, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 90% 90%, rgba(204, 0, 0, 0.1) 0%, transparent 30%);
     pointer-events: none;
-    z-index: -1;
+    z-index: -2;
+    animation: floatingAlbums 15s ease-in-out infinite;
 }
 
-@keyframes backgroundMove {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
-}
-
-@keyframes rotateGradient {
-    0% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.1); }
-    100% { transform: rotate(360deg) scale(1); }
+@keyframes floatingAlbums {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(10px, -10px) rotate(1deg); }
+    50% { transform: translate(-5px, 5px) rotate(-1deg); }
+    75% { transform: translate(5px, -5px) rotate(0.5deg); }
 }
 
 @keyframes fadeIn {
@@ -96,19 +152,6 @@ h1 {
     margin-bottom: 2rem;
     padding: 2rem;
     position: relative;
-}
-
-h1::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(255, 23, 68, 0.1), rgba(142, 36, 170, 0.1));
-    border-radius: 15px;
-    filter: blur(20px);
-    z-index: -1;
 }
 
 @keyframes gradientShift {
